@@ -8,7 +8,6 @@ class AboutMe extends React.Component {
                     <h1 className='heading'>Hi! I'm Anmol.</h1>
                     <h2 className='subHeading'>I'm a software engineer, home cook, student, traveler, basketball fan, gamer, environmentalist, Iron Man aficionado from New Jersey.</h2>
                 </div>
-                <figure className = 'profilePicture' src='/tempProfile.jpeg' alt='The author, Anmol Rattan.' />
             </div>
         )
     }

@@ -5,7 +5,6 @@
 
 body {
     background-color: #e8eaeb;
-    height: 500em;
 
     main {
         padding: 3.5em;
@@ -25,8 +24,8 @@ body {
 .headerContent {
     background-color: #243447;
     position: fixed;
-    width: 65%;
-    margin-left: 17.5%;
+    width: 75%;
+    margin-left: 12.5%;
     height: 3.5em;
     font-size: 1em;
     border-radius: 5em;
@@ -64,7 +63,7 @@ body {
         width: 30em;
         text-align: center;
         color: black;
-        width: 65%;
+        width: 75%;
         margin: 0 auto;
 
         .heading {
@@ -76,13 +75,4 @@ body {
             font-family: 'Catamaran', sans-serif;
         }
     }
-
-    .profilePicture {
-        height: 78%;
-        width: 65%;
-    }
-}
-
-.footerContainer {
-    background-color: #847534;
 }

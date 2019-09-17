@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
     render() {
@@ -12,19 +13,19 @@ class Header extends React.Component {
                             </ul>
                             <ul className='header-word-list'>
                                 <li className='header-component about-me'>
-                                    <a className='header-link about-me-link' href='#'>
+                                    <NavLink className='header-link about-me-link' to='/'>
                                         About Me
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className='header-component projects'>
-                                    <a className='header-link projects-link' href='#'>
+                                    <NavLink className='header-link projects-link' to='/projects'>
                                         Projects
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className='header-component contact-me'>
-                                    <a className='header-link contact-me-link' href='#'>
+                                    <NavLink className='header-link contact-me-link' to='/contact'>
                                         Contact Me
-                                    </a>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>

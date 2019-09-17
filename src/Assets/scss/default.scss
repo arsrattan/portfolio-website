@@ -1,7 +1,7 @@
 $theme-colors: (
-    'background-color': rgb(20,29,38),
+    'background-color': rgb(241, 241, 241),
     'nav-color': rgba(36,52,71,0.85),
-    'text-color': #000
+    'text-color': rgba(36, 36, 36, 0.9)
 );
 
 *,
@@ -30,10 +30,12 @@ $theme-colors: (
         display: block;
         z-index: 100;
         backdrop-filter: blur(10px);
+        font-family: 'Oxygen', sans-serif;
         
         .header-word-list {
             text-align: center;
-            width: auto;
+            width: 80%;
+            margin-left: 10%;
 
             .header-component {
                 display: inline-block;
@@ -52,13 +54,15 @@ $theme-colors: (
 
 main {
     text-align: center;
-    height: 5000px;
-    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+
+    .intro {
+        color: map-get($theme-colors, 'text-color');
+    }
 }
 
 @media screen and (min-width: 321px) {
     .header-nav-content {
-        border: solid red;
 
         .header-link {
             margin: 0;
@@ -69,24 +73,46 @@ main {
 
     main {
         padding-top:80px;
-        width: 85%;
-        text-align: center;
+        width: 90%;
+        margin-left: 5%;
+        height: 1000px;
+        
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 1.4em;
+        }
     }
 }
 
 @media screen and (min-width: 576px) {
     .header-nav-content {
-        border: solid purple;
 
         .header-link {
             font-size: 18px;
             line-height: 2.3px;
         }
     }
+
+    main {
+        padding-top:84px;
+        width: 85%;
+        margin-left: 7.5%;
+        height: 1500px;
+        
+        h1 {
+            font-size: 3.2em;
+        }
+
+        h2 {
+            font-size: 1.6em;
+        }
+    }
 }
 @media screen and (min-width: 768px) {
     .header-nav-content {
-        border: solid yellow;
 
         .header-link {
             margin: 25px;
@@ -95,10 +121,23 @@ main {
         }
     }
 
+    main {
+        padding-top:93px;
+        width: 80%;
+        margin-left: 10%;
+        height: 2000px;
+        
+        h1 {
+            font-size: 3.6em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+        }
+    }
 }
 @media screen and (min-width: 992px) {
     .header-nav-content {
-        border: solid blue;
 
         .header-link {
             margin: 45px;
@@ -107,10 +146,22 @@ main {
         }
     }
 
+    main {
+        padding-top: 93px;
+        width: 75%;
+        margin-left: 12.5%;
+        
+        h1 {
+            font-size: 3.7em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+    }
 }
 @media screen and (min-width: 1200px) {
     .header-nav-content {
-        border: solid green;
 
         .header-link {
             margin: 60px;

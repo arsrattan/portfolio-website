@@ -61,15 +61,17 @@ $theme-colors: (
 .footer-container {
     .social-media-container{
         text-align: center;
+        width: 100%;
         .fab {
             color: map-get($theme-colors, 'text-color');
-            height: 40px;
-            width: 40px;
+            height: 60px;
+            width: 60px;
             margin-bottom: 50px;
             margin-top: 20px;
-            padding-right: 70px;
             text-decoration: none;
-
+            box-sizing: content-box;
+            margin-right: 10px;
+            margin-left: 10px;
             span {
                 height: 1px;
                 width: 1px;

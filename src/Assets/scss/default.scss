@@ -42,7 +42,7 @@ $theme-colors: (
                 position: relative;
 
                 .header-link {
-                    padding: 0 25px;
+                    padding: 0 15px;
                     top: 50%;
                     color: white;
                     text-decoration: none;
@@ -58,6 +58,32 @@ main {
 
     .intro {
         color: map-get($theme-colors, 'text-color');
+    }
+}
+
+@media screen and (min-width: 200px) {
+    .header-nav-content {
+
+        .header-link {
+            margin: 0;
+            font-size: 15px;
+            line-height: 2px;
+        }
+    }
+
+    main {
+        padding-top:80px;
+        width: 90%;
+        margin-left: 5%;
+        height: 1000px;
+        
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 1.4em;
+        }
     }
 }
 

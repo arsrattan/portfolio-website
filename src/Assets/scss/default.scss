@@ -1,7 +1,12 @@
 $theme-colors: (
     'background-color': rgb(241, 241, 241),
     'nav-color': rgba(36,52,71,0.85),
-    'text-color': rgba(36, 36, 36, 0.9)
+    'text-color': rgba(36, 36, 36, 0.99),
+    'facebook-color': #3b5998,
+    'instagram-color': #c13584,
+    'linkedin-color': #0077b5,
+    'github-color': #4078c0,
+    'hackerrank-color': #13a538
 );
 
 *,
@@ -52,6 +57,47 @@ $theme-colors: (
     }
 }
 
+
+.footer-container {
+    .social-media-container{
+        text-align: center;
+        .fab {
+            color: map-get($theme-colors, 'text-color');
+            height: 40px;
+            width: 40px;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            padding-right: 70px;
+            text-decoration: none;
+
+            span {
+                height: 1px;
+                width: 1px;
+                position: absolute;
+                overflow: hidden;
+                top:-10px;
+            }
+        }
+
+        .fa-facebook:hover{
+            color: map-get($theme-colors, 'facebook-color');
+        }
+        .fa-instagram:hover{
+            color: map-get($theme-colors, 'instagram-color');
+        }
+        .fa-linkedin-in:hover{
+            color: map-get($theme-colors, 'linkedin-color');
+        }
+        .fa-github:hover{
+            color: map-get($theme-colors, 'github-color');
+        }
+        .fa-hackerrank:hover{
+            color: map-get($theme-colors, 'hackerrank-color');
+        }
+    }
+}
+
+
 main {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
@@ -59,6 +105,8 @@ main {
     .intro {
         color: map-get($theme-colors, 'text-color');
     }
+
+    min-height: 1000px;
 }
 
 @media screen and (min-width: 200px) {
@@ -75,7 +123,6 @@ main {
         padding-top:80px;
         width: 90%;
         margin-left: 5%;
-        height: 1000px;
         
         h1 {
             font-size: 3em;
@@ -101,7 +148,6 @@ main {
         padding-top:80px;
         width: 90%;
         margin-left: 5%;
-        height: 1000px;
         
         h1 {
             font-size: 3em;
@@ -126,7 +172,6 @@ main {
         padding-top:84px;
         width: 85%;
         margin-left: 7.5%;
-        height: 1500px;
         
         h1 {
             font-size: 3.2em;
@@ -151,7 +196,6 @@ main {
         padding-top:93px;
         width: 80%;
         margin-left: 10%;
-        height: 2000px;
         
         h1 {
             font-size: 3.6em;

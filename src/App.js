@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './Components/header/header';
+import Footer from './Components/footer/footer';
+import AboutMe from './Components/pages/aboutMe';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './Assets/css/default.min.css';
+
+class App extends React.Component {
+    render() {
+        return (
+            <html>
+                <head>
+                    <title>Anmol Rattan</title>
+                    <meta charset='utf-8' />
+                    <link href="https://fonts.googleapis.com/css?family=Cabin|Catamaran&display=swap" rel="stylesheet" />
+                </head>
+                <body>
+                    <div className='App'>
+                        <Header />
+                        <main>
+                            <AboutMe />
+                            </main>
+                        <Footer />
+                    </div>
+                </body>
+            </html>
+        )
+    }
 }
 
 export default App;

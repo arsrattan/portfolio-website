@@ -1,7 +1,10 @@
 $theme-colors: (
     'background-color': rgb(241, 241, 241),
-    'nav-color': rgba(36,52,71,0.85),
+    'input-background-color': rgb(255, 255, 255),
+    'button-color': #63707e,
+    'nav-color': rgba(36,52,71,0.8),
     'text-color': rgba(36, 36, 36, 0.99),
+    'social-media-color': rgba(77, 77, 77, 0.95),
     'facebook-color': #3b5998,
     'instagram-color': #c13584,
     'linkedin-color': #0077b5,
@@ -36,6 +39,7 @@ $theme-colors: (
         z-index: 100;
         backdrop-filter: blur(10px);
         font-family: 'Oxygen', sans-serif;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         
         .header-word-list {
             text-align: center;
@@ -55,6 +59,47 @@ $theme-colors: (
             }
         }
     }
+
+    .contact-form {
+        font-family: 'Oxygen', sans-serif;
+        .input-component {
+            .form-control {
+                text-align: center;
+                border-radius: 25px;
+                background-color: map-get($theme-colors, 'input-background-color');
+            }
+        }
+        .button-submit {
+            color: white;
+            width: 175px;
+            height: 45px;
+            border-radius: 25px;
+            background-color: map-get($theme-colors, 'button-color');
+            outline: none;
+        }
+        .button-react {
+            width: 105px;
+            height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 25px;
+            color: map-get($theme-colors, 'text-color');
+            outline: none;
+        }
+        .button-submit:hover {
+            background-color: map-get($theme-colors, 'nav-color');
+        }
+        .button-react:hover {
+            border: solid map-get($theme-colors, 'nav-color');
+        }
+        .button-submit:disabled {
+            color: lightgray;
+        }
+        #spinner {
+            box-sizing: content-box;
+            margin-top: -3px;
+        }
+    }
 }
 
 
@@ -63,11 +108,11 @@ $theme-colors: (
         text-align: center;
         width: 100%;
         .fab {
-            color: map-get($theme-colors, 'text-color');
+            color: map-get($theme-colors, 'social-media-color');
             height: 60px;
             width: 60px;
-            margin-bottom: 50px;
-            margin-top: 20px;
+            margin-bottom: 40px;
+            margin-top: 80px;
             text-decoration: none;
             box-sizing: content-box;
             span {
@@ -101,17 +146,13 @@ $theme-colors: (
 main {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
-
     .intro {
         color: map-get($theme-colors, 'text-color');
     }
-
-    min-height: 1000px;
 }
 
 @media screen and (min-width: 200px) {
     .header-nav-content {
-
         .header-link {
             margin: 0;
             font-size: 15px;
@@ -137,11 +178,26 @@ main {
         margin-right: 3px;
         margin-left: 3px;
     }
+
+    .input-component {
+        .form-control {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        #message {
+            height: 170px;
+            border-radius: 20px;
+        }
+    }
+
+    .button-submit {
+        margin-top: 15px;
+    }
 }
 
 @media screen and (min-width: 321px) {
     .header-nav-content {
-
         .header-link {
             margin: 0;
             font-size: 16px;
@@ -171,7 +227,6 @@ main {
 
 @media screen and (min-width: 576px) {
     .header-nav-content {
-
         .header-link {
             font-size: 18px;
             line-height: 2.3px;
@@ -223,7 +278,6 @@ main {
 }
 @media screen and (min-width: 992px) {
     .header-nav-content {
-
         .header-link {
             margin: 45px;
             font-size: 20px;
@@ -247,11 +301,16 @@ main {
 }
 @media screen and (min-width: 1200px) {
     .header-nav-content {
-
         .header-link {
             margin: 60px;
             font-size: 20px;
             line-height: 3px;
         }
+    }
+    .contact-form {
+        width: 84%;
+        height: 520px;
+        margin-left: 8%;
+        margin-top: 25px;
     }
 }

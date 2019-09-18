@@ -80,8 +80,6 @@ $theme-colors: (
         .button-react {
             width: 105px;
             height: 40px;
-            margin-left: 10px;
-            margin-right: 10px;
             border-radius: 25px;
             color: map-get($theme-colors, 'text-color');
             outline: none;
@@ -191,6 +189,11 @@ main {
         }
     }
 
+    .button-react {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
     .button-submit {
         margin-top: 15px;
     }
@@ -223,6 +226,11 @@ main {
         margin-right: 7px;
         margin-left: 7px;
     }
+
+    .button-react {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
 @media screen and (min-width: 576px) {
@@ -250,6 +258,11 @@ main {
     .fab {
         margin-right: 10px;
         margin-left: 10px;
+    }
+
+    .button-react {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 @media screen and (min-width: 768px) {

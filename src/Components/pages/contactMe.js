@@ -17,6 +17,7 @@ class ContactMe extends React.Component {
             errorsExist: false,
             responseMessage: ''
         }
+        this.originalState = this.state;
         this.validateForm = this.validateForm.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
     }
@@ -51,23 +52,26 @@ class ContactMe extends React.Component {
             )
             await this.setState({responseMessage: 'Your request has been received and I will get back to you within 24 hours.'});
         } catch (err) {
-            await this.setState({responseMessage: 'Unfortunately I was not able to process your contact request at this time.'});
-            await this.setState({errorsExist: true});
+            await this.setState({responseMessage: 'Unfortunately I was not able to process your contact request at this time.', errorsExist: true});
         }
-        await this.setState({completed: true});
-        await this.resetForm();
+        this.setState({completed: true});
+        this.resetForm();
+    }
+    
+    async closeDialog() {
+        await this.setState({completed: false});
+        await this.setState(this.originalState);
     }
 
     async resetForm() {
-        await this.refs.nameInput.resetInput();
-        await this.refs.emailInput.resetInput();
-        await this.refs.phoneInput.resetInput();
-        await this.refs.messageInput.resetInput();
-    }
+        this.refs.nameInput.reset();
+        this.refs.emailInput.reset();
+        this.refs.phoneInput.reset();
+        this.refs.messageInput.reset();
 
-    async closeDialog(value) {
-        await this.setState({completed: false });
-        await this.setState({loading: false, errorsExist: false});
+        this.refs.emailOpt.reset();
+        this.refs.phoneOpt.reset();
+        this.refs.textOpt.reset();
     }
     
     async validateForm() {
@@ -85,8 +89,9 @@ class ContactMe extends React.Component {
                     <h1 className='intro heading'>Contact Me</h1>
                     <h2 className='intro description'>Please enter your information and message below, and I will get back to you within 24 hours.</h2>
                 </div>
-                <div className='contact-form'>
+                <div id= 'contact-form-wrapper' className='contact-form'>
                     <form id='contact-form' onSubmit={this.handleSubmit.bind(this)}>
+                        <Modal isVisible={this.state.completed} onClose={this.closeDialog} content={this.state.responseMessage} finishedWithErrors={this.state.errorsExist}/>
                         <InputField id='name' ref='nameInput' formValidator={this.validateForm}/>
                         <InputField id='emailAddress' ref='emailInput' formValidator={this.validateForm}/>
                         <InputField id='phoneNumber' ref='phoneInput' formValidator={this.validateForm}/>
@@ -99,12 +104,13 @@ class ContactMe extends React.Component {
                             <DynamicButton name='Text' ref='textOpt'/>
                         </div>
                         <button ref='submitBtn' type='submit' className='button-submit' disabled={!this.state.formValid}>{this.state.loading ? <LoadingSpinner /> : 'Submit'}</button>
-                        <Modal isVisible={this.state.completed} onClose={this.closeDialog} content={this.state.responseMessage} finishedWithErrors={this.state.errorsExist}/>
                     </form>
                 </div>
             </div>
         )
     }
 }
+
+// <Modal isVisible={this.state.completed} onClose={this.closeDialog} content={this.state.responseMessage} finishedWithErrors={this.state.errorsExist}/>
 
 export default ContactMe;

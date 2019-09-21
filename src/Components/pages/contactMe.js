@@ -4,6 +4,7 @@ import DynamicButton from '../button/button';
 import credentials from '../../utils/getCredentials';
 import LoadingSpinner from '../loading/loading';
 import InputField from '../input/input';
+import Modal from '../modal/modal.js';
 
 class ContactMe extends React.Component {
 
@@ -11,12 +12,17 @@ class ContactMe extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            formValid: false
+            formValid: false,
+            completed: false,
+            errorsExist: false,
+            responseMessage: ''
         }
         this.validateForm = this.validateForm.bind(this);
+        this.closeDialog = this.closeDialog.bind(this);
     }
 
     async handleSubmit(event) {
+
         event.preventDefault();
         const name = document.getElementById('name').value;
         const emailAddress = document.getElementById('emailAddress').value;
@@ -27,28 +33,42 @@ class ContactMe extends React.Component {
         const textOpt = this.refs.textOpt.state.clicked;
 
         await this.setState({loading: true});
-        const axiosRes = await axios.post(
-            credentials.emailServer + '/email',
-            {
-                name:name, 
-                emailAddress:emailAddress, 
-                phoneNumber:phoneNumber, 
-                message:message,
-                options: {
-                    emailOpt: emailOpt, 
-                    phoneOpt: phoneOpt, 
-                    textOpt:textOpt
-                }
-            }
-        )
-        
-        await this.setState({loading: false});
-        if(axiosRes.status === 200) {
-            alert('Your request has been received, thank you!');
-        } else {
-            alert('Oops! The request could not be received due to a technical error');
-        }
 
+        try {
+            await axios.post(
+                credentials.emailServer + '/email',
+                {
+                    name:name, 
+                    emailAddress:emailAddress, 
+                    phoneNumber:phoneNumber, 
+                    message:message,
+                    options: {
+                        emailOpt: emailOpt, 
+                        phoneOpt: phoneOpt, 
+                        textOpt:textOpt
+                    }
+                }
+            )
+            await this.setState({responseMessage: 'Your request has been received and I will get back to you within 24 hours.'});
+        } catch (err) {
+            await this.setState({responseMessage: 'Unfortunately I was not able to process your contact request at this time.'});
+            await this.setState({errorsExist: true});
+            await this.resetForm();
+        }
+        await this.setState({completed: true});
+        await this.resetForm();
+    }
+
+    async resetForm() {
+        await this.refs.nameInput.resetInput();
+        await this.refs.emailInput.resetInput();
+        await this.refs.phoneInput.resetInput();
+        await this.refs.messageInput.resetInput();
+    }
+
+    async closeDialog(value) {
+        await this.setState({completed: false });
+        await this.setState({loading: false, errorsExist: false});
     }
     
     async validateForm() {
@@ -80,6 +100,7 @@ class ContactMe extends React.Component {
                             <DynamicButton name='Text' ref='textOpt'/>
                         </div>
                         <button ref='submitBtn' type='submit' className='button-submit' disabled={!this.state.formValid}>{this.state.loading ? <LoadingSpinner /> : 'Submit'}</button>
+                        <Modal isVisible={this.state.completed} onClose={this.closeDialog} content={this.state.responseMessage} finishedWithErrors={this.state.errorsExist}/>
                     </form>
                 </div>
             </div>

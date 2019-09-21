@@ -78,8 +78,6 @@ $theme-colors: (
             outline: none;
         }
         .button-react {
-            width: 105px;
-            height: 40px;
             border-radius: 25px;
             color: map-get($theme-colors, 'text-color');
             outline: none;
@@ -190,6 +188,8 @@ main {
     }
 
     .button-react {
+        width: 85px;
+        height: 40px;
         margin-left: 3px;
         margin-right: 3px;
     }
@@ -228,6 +228,7 @@ main {
     }
 
     .button-react {
+        width: 105px;
         margin-left: 5px;
         margin-right: 5px;
     }

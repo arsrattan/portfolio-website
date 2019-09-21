@@ -18,6 +18,10 @@ export default class inputField extends React.Component {
         await this.props.formValidator();
     }
 
+    async resetInput() {
+        await this.setState({value: "", valid: false});
+    }
+
     render() {
         return (
             <div className='input-component name'>

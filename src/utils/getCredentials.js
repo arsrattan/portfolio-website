@@ -1,3 +1,3 @@
 export default {
-    emailServer: 'http://localhost:3005'
+    emailServer: process.env.EMAIL_SERVER
 }

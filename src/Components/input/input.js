@@ -5,10 +5,15 @@ export default class inputField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",
+            value: '',
             valid: false
         }
+        this.originalState = this.state;
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    async reset() {
+        await this.setState(this.originalState);
     }
 
     async handleChange(event) {
@@ -18,14 +23,10 @@ export default class inputField extends React.Component {
         await this.props.formValidator();
     }
 
-    async resetInput() {
-        await this.setState({value: "", valid: false});
-    }
-
     render() {
         return (
             <div className='input-component name'>
-                <input type='text' className='form-control' placeholder={placeholderDict[this.props.id]} id={this.props.id} value={this.state.value} onChange={this.handleChange} required/> 
+                <input type='text' className='form-control' placeholder={placeholderDict[this.props.id]} value={this.state.value} id={this.props.id} onChange={this.handleChange} required/> 
             </div>
         )
     }

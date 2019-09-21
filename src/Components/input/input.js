@@ -6,7 +6,8 @@ export default class inputField extends React.Component {
         super(props);
         this.state = {
             value: '',
-            valid: false
+            valid: false,
+            border: ''
         }
         this.originalState = this.state;
         this.handleChange = this.handleChange.bind(this);
@@ -20,13 +21,14 @@ export default class inputField extends React.Component {
         const newVal = event.target.value;
         await this.setState({value: newVal});
         await this.setState({valid: validDict[this.props.id](newVal) ? true : false});
+        await this.setState({border: validDict[this.props.id](newVal) ? '' : 'dotted red 1px'});
         await this.props.formValidator();
     }
 
     render() {
         return (
             <div className='input-component name'>
-                <input type='text' className='form-control' placeholder={placeholderDict[this.props.id]} value={this.state.value} id={this.props.id} onChange={this.handleChange} required/> 
+                <input type='text' className='form-control' placeholder={placeholderDict[this.props.id]} value={this.state.value} id={this.props.id} onChange={this.handleChange} style={{border:this.state.border}} required/> 
             </div>
         )
     }
@@ -41,7 +43,7 @@ const placeholderDict = {
 
 const validDict = {
     'name': (value) => {
-        return value.length >= 1;
+        return value.match(/[A-Za-z]+/);
     },
     'emailAddress': (value) => {
         return value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);

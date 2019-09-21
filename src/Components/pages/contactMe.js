@@ -23,7 +23,6 @@ class ContactMe extends React.Component {
     }
 
     async handleSubmit(event) {
-
         event.preventDefault();
         const name = document.getElementById('name').value;
         const emailAddress = document.getElementById('emailAddress').value;
@@ -34,8 +33,8 @@ class ContactMe extends React.Component {
         const textOpt = this.refs.textOpt.state.clicked;
 
         await this.setState({loading: true});
-
         try {
+            alert(credentials.emailServer + '/email');
             await axios.post(
                 credentials.emailServer + '/email',
                 {

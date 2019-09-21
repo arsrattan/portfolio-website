@@ -53,7 +53,6 @@ class ContactMe extends React.Component {
         } catch (err) {
             await this.setState({responseMessage: 'Unfortunately I was not able to process your contact request at this time.'});
             await this.setState({errorsExist: true});
-            await this.resetForm();
         }
         await this.setState({completed: true});
         await this.resetForm();

@@ -1,13 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import { DialogContentText, DialogActions, Button, Slide, makeStyles, DialogContent, DialogTitle, Dialog } from '@material-ui/core';
+import { DialogContentText, DialogActions, Button, makeStyles, DialogContent, DialogTitle, Dialog } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        height: '700px',
-        marginTop: '100px',
+        height: '100%',
+        paddingBottom: '200px',
+        background: 'rgba(0,0,0,0.5)',
 
         '& .dialog-title': {
             textAlign: 'center',
@@ -29,12 +30,8 @@ export default function Modal(props) {
 
     const classes = useStyles();
 
-    const Transition = React.forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
-    });
-
     return (
-        <Dialog className={clsx(classes.root, 'root')} onClose={props.onClose} aria-labelledby="simple-dialog-title" aria-describedby="alert-dialog-slide-description" open={props.isVisible} TransitionComponent={Transition}>
+        <Dialog className={clsx(classes.root, 'root')} onClose={props.onClose} aria-labelledby="simple-dialog-title" aria-describedby="alert-dialog-slide-description" open={props.isVisible}>
             <div>
             <DialogTitle className='test' id="simple-dialog-title">
                 <div className='dialog-title'>Contact Request</div>

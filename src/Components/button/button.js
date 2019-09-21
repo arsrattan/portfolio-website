@@ -9,6 +9,11 @@ export default class DynamicButton extends React.Component {
             backgroundColor: 'rgb(255, 255, 255)',
             color: 'rgba(36, 36, 36, 0.99)'
         }
+        this.originalState = this.state;
+    }
+
+    reset() {
+        this.setState(this.originalState);
     }
 
     handleClick() {
